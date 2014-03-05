@@ -20,7 +20,7 @@
         var $body, ani_style, img_scroll, scroll_hei;
         doc_hei = doc_hei === $doc.height() ? doc_hei : $doc.height();
         scroll_hei = $doc.scrollTop();
-        img_scroll = scroll_hei(doc_hei - win_hei) * 100..toFixed(7);
+        img_scroll = scroll_hei / (doc_hei - win_hei) * 100..toFixed(7);
         $body = $('body');
         ani_style = "background-position " + op.d + " " + op.et;
         $body.css({
