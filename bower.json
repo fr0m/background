@@ -1,0 +1,8 @@
+{
+   "name": "switcher",
+   "version": "0.0.1",
+   "main": "switcher.js",
+   "dependencies": {
+     "jQuery": "1.11.0"
+	}
+}
