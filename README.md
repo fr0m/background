@@ -9,7 +9,7 @@
 
 ## Demonstration Effect
 
-Please visit [ihaveu.com](http://www.ihaveu.com/home)
+Please visit [ihaveu.com/home](http://www.ihaveu.com/home)
 
 ## Contributors
 
