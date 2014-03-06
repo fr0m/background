@@ -1,0 +1,14 @@
+body
+{
+	margin : 0 auto;
+	background-repeat : no-repeat;
+	background-attachment : fixed;
+	background-position : center 0%;
+}
+.wrap
+{
+	background-color : #fff;
+	height : 100%;
+	width : 960px;
+	margin:0 auto;
+}
