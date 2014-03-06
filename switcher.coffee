@@ -27,7 +27,7 @@ switcher =
 			url : "" # for where u get ur json file
 			link : "" # for the wrap u wanna bind with a link
 			d : [] #default set for background-image & background-color if u need
-			strc : [] #set start, end, image, color, url key name in order
+			strc : [] #set backgrounds, start, end, image, color, url key name in order
 		op = $.extend constructor,option
 		$body = $('body')
 		$.ajax({
