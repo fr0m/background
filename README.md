@@ -1,4 +1,5 @@
 # Ticker Slide
+[![Build Status](https://travis-ci.org/fr0m/switcher.png?branch=master)](https://travis-ci.org/fr0m/switcher)
 
 * the Slide will make the background-image of website slide as the page scroll up & down.
 * the Ticker will change the background-image of webstie as the time tick by.
