@@ -1,26 +1,15 @@
-# Background Ticker
+# swticher
 
- [![Build Status](https://secure.travis-ci.org/mozilla/localForage.png?branch=master)](http://travis-ci.org/mozilla/localForage)
-
-Automatically add HTTP Cache-control header when [caches_action expires_in](https://github.com/rails/actionpack-action_caching) specified.
+[![Build Status](https://travis-ci.org/fr0m/switcher.png?branch=master)](https://travis-ci.org/fr0m/switcher)
 
 ## Requirements
 
-* Ruby ~> 2.0
-* Rails ~> 4.0
-* actionpack-action_caching ~> 1.1
+* CoffeeScript ~> 1.7.1
+* jQuery ~> 1.11.0
 
-## Installation
+## Demonstration Effect
 
-Include the gem in your Gemfile:
-
-```ruby
-gem 'rails-cache_control'
-```
-
-## Usage
-
-Do nothing.
+Please visit [ihaveu.com](http://www.ihaveu.com/home)
 
 ## Contributors
 
@@ -31,4 +20,4 @@ Special thanks to
 
 ## License
 
-Copyright © 2014 Jianqiu Xiao <swordray@gmail.com> under The [MIT License](http://opensource.org/licenses/MIT).
+Copyright © 2014 He Liu <gilbert.fr0m@gmail.com> under The [MIT License](http://opensource.org/licenses/MIT).
