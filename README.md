@@ -1,6 +1,4 @@
-## swticher
-
-[![Build Status](https://travis-ci.org/fr0m/switcher.png?branch=master)](https://travis-ci.org/fr0m/switcher)
+# Swticher
 
 ## Requirements
 
