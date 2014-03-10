@@ -5,7 +5,17 @@
 
 * jQuery ~> 1.11.0
 
-##Usage
+## Installation
+
+- Bower ```
+			bower install background.js
+		```
+- Gem ```
+			gem install background.js
+	
+	  ```
+
+## Usage
 
 ```javascript 
 	background.slide();

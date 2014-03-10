@@ -1,7 +1,7 @@
 {
    "name": "background.js",
    "version": "0.0.3",
-   "main": "background.js",
+   "main": "background.min.js",
    "dependencies": {
      "jQuery": "1.11.0"
 	}
