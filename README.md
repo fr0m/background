@@ -18,10 +18,8 @@
 
 ## Usage
 
-```javascript 
-	background.slide();
-```
-<br />more specific:
+#### background.slide()
+
 ```javascript 
 	background.slide([horizontal, easeType, duration])
 ```
@@ -40,7 +38,10 @@
 	- Initial Value : "1s"
 	- Values : "xs"
 	- define the duration of the animation
-<br />for tick u should prepare a JSON like this:
+
+#### background.tick()
+
+a string in JSON format needed
 ```json
 {"backgrounds":[{"started":"11:30:00","ended":"13:30:00","image":"./ihaveu.jpg","color":"#fff"}]}
 ```
