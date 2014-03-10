@@ -7,13 +7,14 @@
 
 ## Installation
 
-- Bower ```
-			bower install background.js
-		```
-- Gem ```
-			gem install background.js
-	
-	  ```
+- Bower 
+	```
+		bower install background.js
+	```
+- Gem 
+	```
+		gem install background.js
+	```
 
 ## Usage
 
