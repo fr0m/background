@@ -1,7 +1,7 @@
 {
-   "name": "switcher",
+   "name": "background.js",
    "version": "0.0.3",
-   "main": "TickerSlide.js",
+   "main": "background.js",
    "dependencies": {
      "jQuery": "1.11.0"
 	}

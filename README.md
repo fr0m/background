@@ -1,42 +1,58 @@
-# Ticker Slide
-[![Build Status](https://travis-ci.org/fr0m/switcher.png?branch=master)](https://travis-ci.org/fr0m/switcher)
-
-* the Slide will make the background-image of website slide as the page scroll up & down.
-* the Ticker will change the background-image of webstie as the time tick by.
+# Background JS
+[![Build Status](https://travis-ci.org/fr0m/background.js.png?branch=master)](https://travis-ci.org/fr0m/background.js)
 
 ## Requirements
 
-* CoffeeScript ~> 1.7.1
 * jQuery ~> 1.11.0
 
 ##Usage
 
-just
-```javascript 
-	tic_sli.slide();
-```
-more specific:
-```javascript 
-	tic_sli.slide({
-		x : "background-position" //background-position horizontal percentage, default set:"50%",
-		et : "easetype" //animation ease type , default set:"ease-out",
-		d : "duration" //animation duration, default set:"1s"
-	});
-```
-
-for ticker u should prepare a json file like this:
-
-```json
-{"backgrounds":[{"started":"3","ended":"5","image":"http://urimg.net/this.jpg","color":"#fff"}]}
-```
-
-and
-```javascript 
-	tic_sli.ticker({
-		url : "jsonURL",
-		d : ["backgroundImageURL", "backgroundColor"] //default set for background-image and background-color
-	});
-```
+- just
+	```javascript 
+		background.slide();
+	```
+	more specific:
+	```javascript 
+		background.slide([horizontal, easeType, duration])
+	```
+	- **horizontal**
+		Type : String
+		Initial Value : "50%"
+		Values : "xx%"
+		define the horizontal position of the background
+	- **easeType**
+		Type : String
+		Initial Value : "ease-out"
+		Values : "ease", "ease-in", "ease-out", "ease-in-out", "linear", "step-start", "step-end"
+		define the ease type of the animation
+	- **duration**
+		Type : String
+		Initial Value : "1s"
+		Values : "xs"
+		define the duration of the animation
+- for tick u should prepare a JSON like this:
+	```json
+	{"backgrounds":[{"started":"11:30:00","ended":"13:30:00","image":"./ihaveu.jpg","color":"#fff"}]}
+	```
+	and
+	```javascript
+		background.tick(JSON[, backgroundImage, backgroundColor]);
+	```
+	- **JSON**
+		Type : String
+		Initial Value : None
+		Values : URL return in JSON format or string in JSON format
+		define how the background will change by time
+	- **backgroundImage**
+		Type : String
+		Initial Value : None
+		Values : URL
+		define the default backgroundImage if u didn't set one
+	- **backgroundColor**
+		Type : String
+		Initial Value : None
+		Values : "#xxxxxx"
+		define the default backgroundColor if u didn't set one
 
 ## Demonstration Effect
 
