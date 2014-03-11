@@ -11,13 +11,15 @@ window.background = {
     constructor = {
       horizontal: "center",
       duration: "1s",
-      easeType: "ease-out"
+      easeType: "ease-out",
+      callback: function() {}
     };
     if (typeof option === "string") {
       option = {
         horizontal: arguments[0],
         duration: arguments[1],
-        easeType: arguments[2]
+        easeType: arguments[2],
+        callback: arguments[3]
       };
     }
     op = $.extend(constructor, option);
@@ -30,6 +32,9 @@ window.background = {
       '-ms-transition': ani_style
     });
     _ref = [p.$d.height(), p.$w.height()], doc_hei = _ref[0], win_hei = _ref[1];
+    p.$b.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(event) {
+      return op.callback();
+    });
     p.$w.on('resize', function(event) {
       return win_hei = $(this).height();
     });

@@ -6,21 +6,24 @@ window.background =
 		$b : $('body')
 	
 	slide:(option)->
-		##console.log parseInt('03:03:03')
 		p = this.internal
 		constructor = # Default Set
 			 horizontal : "center"
 			 duration : "1s"
 			 easeType : "ease-out"
+			 callback : ()->
 		if typeof option is "string"
 			option = 
 				horizontal : arguments[0]
 				duration : arguments[1]
 				easeType : arguments[2]
+				callback : arguments[3]
 		op = $.extend constructor, option
 		ani_style = "background-position #{op.duration} #{op.easeType}"
 		p.$b.css({'transition':ani_style, 'moz-transition':ani_style, '-webkit-transition':ani_style, '-o-transition':ani_style, '-ms-transition':ani_style})
 		[doc_hei, win_hei] = [p.$d.height(), p.$w.height()]
+		p.$b.on 'transitionend webkitTransitionEnd oTransitionEnd otransitionend',(event)->
+			op.callback()
 		p.$w.on 'resize', (event)->
 			win_hei = $(this).height()
 		p.$w.on 'scroll', (event)->
