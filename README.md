@@ -3,25 +3,50 @@
 
 ## Requirements
 
-* jQuery ~> 1.11.0
+* jQuery ~> 1.7
 
 ## Installation
 
-- Bower 
+Bower 
 	```
 		bower install background.js
 	```
-- Gem 
-	```
-		gem install background.js
-	```
+
+## Demonstration Effect
+
+Please visit [ihaveu.com/home](http://www.ihaveu.com/home)
 
 ## Usage
 
-#### background.slide()
+### Example
+
+first, load [jQuery](http://jquery.com/) and the plugin<br />
+```html
+	<script src="jquery.min.js" type="text/javascript"></script>
+	<script src="background.min.js" type="text/javascript"></script>
+```
+then, let's slide the background<br />
+```javascript
+	Background.slide("center", "ease-in-out", "1s"); // or without the params, it's ur call.
+```
+wanna change the background by time?<br />
+```javascript
+	var json = {"backgrounds": [
+			{"started":"11:30:00","ended":"13:30:00","image":"./ihaveu.jpg","color":"#fff"},
+			{"started":"14:00:00","ended":"17:30:00","image":"./ihaveu.jpg","color":"#000"}
+			]};
+	Background.tick(json);
+```
+and u can also get a json file via ajax<br />
+```javascript
+	Background.tick("./test/test.json");
+```
+### API DOCS
+
+##### Background.slide()
 
 ```javascript 
-	background.slide([horizontal, easeType, duration])
+	Background.slide([horizontal, easeType, duration])
 ```
 - **horizontal**
 	- Type : String
@@ -39,15 +64,10 @@
 	- Values : "xs"
 	- define the duration of the animation
 
-#### background.tick()
+##### Background.tick()
 
-a string in JSON format needed
-```json
-{"backgrounds":[{"started":"11:30:00","ended":"13:30:00","image":"./ihaveu.jpg","color":"#fff"}]}
-```
-<br />then
 ```javascript
-	background.tick(JSON[, backgroundImage, backgroundColor]);
+	Background.tick(JSON[, backgroundImage, backgroundColor]);
 ```
 - **JSON**
 	- Type : String
@@ -64,10 +84,6 @@ a string in JSON format needed
 	- Initial Value : None
 	- Values : "#xxxxxx"
 	- define the default backgroundColor if u didn't set one
-
-## Demonstration Effect
-
-Please visit [ihaveu.com/home](http://www.ihaveu.com/home)
 
 ## Contributors
 
