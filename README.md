@@ -56,62 +56,62 @@ then, let's do this<br />
 ##### Background.tick()
 
 ```javascript
-	Background.tick(data[, horizontal, duration, easeType, callback]);
+	Background.tick([data, horizontal, duration, easeType, callback]);
 ```
 - **data**
 	- Type : [String](http://api.jquery.com/Types/#String) or [PlainObject](http://api.jquery.com/Types/#PlainObject)
-	- Initial Value : None
+	- Default : None
 	- Values : URL of an image or URL return in JSON format or string in JSON format
-	- define the background and how it will change by time
+	- define the background and how it will change by time, it's not required if background-image is set in stylesheet
 - **horizontal**
 	- Type : [String](http://api.jquery.com/Types/#String)
-	- Initial Value : "50%"
+	- Default : "50%"
 	- Values : "xx%"
 	- define the horizontal position of the background
 - **duration**
 	- Type : [String](http://api.jquery.com/Types/#String)
-	- Initial Value : "1s"
+	- Default : "1s"
 	- Values : "xs"
 	- define the duration of the animation
 - **easeType**
 	- Type : [String](http://api.jquery.com/Types/#String)
-	- Initial Value : "ease-out"
+	- Default : "ease-out"
 	- Values : "ease", "ease-in", "ease-out", "ease-in-out", "linear", "step-start", "step-end"
 	- define the ease type of the animation
 - **callback**
 	- Type : [Function](http://api.jquery.com/Types/#Function)
-	- Initial Value : None
+	- Default : None
 	- Values : a function run after the background slide animation ended
 	- define the callback function of the animation
 
 ```javascript
-	Background.tick(options);
+	Background.tick([options]);
 ```
--**options**<br />
-Type : [PlainObject](http://api.jquery.com/Types/#PlainObject)
+- **options**<br />
+	Type : [PlainObject](http://api.jquery.com/Types/#PlainObject)
 	- **data**
 		- Type : [String](http://api.jquery.com/Types/#String) or [PlainObject](http://api.jquery.com/Types/#PlainObject)
-		- Initial Value : None
+		- Default : None
 		- Values : URL of an image or URL return in JSON format or string in JSON format
-		- define the background and how it will change by time
+		- define the background and how it will change by time, it's not required if background-image is set in stylesheet
 	- **horizontal**
 		- Type : [String](http://api.jquery.com/Types/#String)
-		- Initial Value : "50%"
+		- Default : "50%"
 		- Values : "xx%"
 		- define the horizontal position of the background
 	- **duration**
 		- Type : [String](http://api.jquery.com/Types/#String)
-		- Initial Value : "1s"
+		- Default : "1s"
 		- Values : "xs"
 		- define the duration of the animation
 	- **easeType**
 		- Type : [String](http://api.jquery.com/Types/#String)
-		- Initial Value : "ease-out"
+		- Default : "ease-out"
 		- Values : "ease", "ease-in", "ease-out", "ease-in-out", "linear", "step-start", "step-end"
 		- define the ease type of the animation
 	- **callback**
 		- Type : [Function](http://api.jquery.com/Types/#Function)
-		- Initial Value : None
+		- Default : None
 		- Values : a function run after the background slide animation ended
 		- define the callback function of the animation
 
