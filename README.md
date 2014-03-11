@@ -7,14 +7,19 @@
 
 ## Installation
 
-Bower 
-	```
-		bower install background.js
-	```
+### Bower 
+
+    bower install background.js
+
+### Gem
+
+   	gem install rails-assets-background.js --source https://rails-assets.org
 
 ## Demonstration Effect
 
-Please visit [ihaveu.com/home](http://www.ihaveu.com/home)
+Please visit
+
+[ihaveu.com/home](http://www.ihaveu.com/home)
 
 ## Usage
 
@@ -22,68 +27,93 @@ Please visit [ihaveu.com/home](http://www.ihaveu.com/home)
 
 first, load [jQuery](http://jquery.com/) and the plugin<br />
 ```html
-	<script src="jquery.min.js" type="text/javascript"></script>
-	<script src="background.min.js" type="text/javascript"></script>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script src="background.js" type="text/javascript"></script>
 ```
-then, let's slide the background<br />
+then, let's do this<br />
 ```javascript
-	Background.slide("center", "ease-in-out", "1s"); // or without the params, it's ur call.
+	var json = {
+					"backgrounds": [
+						{
+							"started":"11:30:00",
+							"ended":"13:30:00",
+							"image":"./ihaveu.jpg",
+							"color":"#fff"
+						},
+						{
+							"started":"14:00:00",
+							"ended":"17:30:00",
+							"image":"./ihaveu.jpg",
+							"color":"#000"
+						}
+					]	
+				};
+    Background.tick(json)
 ```
-wanna change the background by time?<br />
-```javascript
-	var json = {"backgrounds": [
-			{"started":"11:30:00","ended":"13:30:00","image":"./ihaveu.jpg","color":"#fff"},
-			{"started":"14:00:00","ended":"17:30:00","image":"./ihaveu.jpg","color":"#000"}
-			]};
-	Background.tick(json);
-```
-and u can also get a json file via ajax<br />
-```javascript
-	Background.tick("./test/test.json");
-```
+
 ### API DOCS
-
-##### Background.slide()
-
-```javascript 
-	Background.slide([horizontal, easeType, duration])
-```
-- **horizontal**
-	- Type : String
-	- Initial Value : "50%"
-	- Values : "xx%"
-	- define the horizontal position of the background
-- **easeType**
-	- Type : String
-	- Initial Value : "ease-out"
-	- Values : "ease", "ease-in", "ease-out", "ease-in-out", "linear", "step-start", "step-end"
-	- define the ease type of the animation
-- **duration**
-	- Type : String
-	- Initial Value : "1s"
-	- Values : "xs"
-	- define the duration of the animation
 
 ##### Background.tick()
 
 ```javascript
-	Background.tick(JSON[, backgroundImage, backgroundColor]);
+	Background.tick(data[, horizontal, duration, easeType, callback]);
 ```
-- **JSON**
-	- Type : String
+- **data**
+	- Type : [String](http://api.jquery.com/Types/#String) or [PlainObject](http://api.jquery.com/Types/#PlainObject)
 	- Initial Value : None
-	- Values : URL return in JSON format or string in JSON format
-	- define how the background will change by time
-- **backgroundImage**
-	- Type : String
+	- Values : URL of an image or URL return in JSON format or string in JSON format
+	- define the background and how it will change by time
+- **horizontal**
+	- Type : [String](http://api.jquery.com/Types/#String)
+	- Initial Value : "50%"
+	- Values : "xx%"
+	- define the horizontal position of the background
+- **duration**
+	- Type : [String](http://api.jquery.com/Types/#String)
+	- Initial Value : "1s"
+	- Values : "xs"
+	- define the duration of the animation
+- **easeType**
+	- Type : [String](http://api.jquery.com/Types/#String)
+	- Initial Value : "ease-out"
+	- Values : "ease", "ease-in", "ease-out", "ease-in-out", "linear", "step-start", "step-end"
+	- define the ease type of the animation
+- **callback**
+	- Type : [Function](http://api.jquery.com/Types/#Function)
 	- Initial Value : None
-	- Values : URL
-	- define the default backgroundImage if u didn't set one
-- **backgroundColor**
-	- Type : String
-	- Initial Value : None
-	- Values : "#xxxxxx"
-	- define the default backgroundColor if u didn't set one
+	- Values : a function run after the background slide animation ended
+	- define the callback function of the animation
+
+```javascript
+	Background.tick(options);
+```
+-**options**<br />
+Type : [PlainObject](http://api.jquery.com/Types/#PlainObject)
+	- **data**
+		- Type : [String](http://api.jquery.com/Types/#String) or [PlainObject](http://api.jquery.com/Types/#PlainObject)
+		- Initial Value : None
+		- Values : URL of an image or URL return in JSON format or string in JSON format
+		- define the background and how it will change by time
+	- **horizontal**
+		- Type : [String](http://api.jquery.com/Types/#String)
+		- Initial Value : "50%"
+		- Values : "xx%"
+		- define the horizontal position of the background
+	- **duration**
+		- Type : [String](http://api.jquery.com/Types/#String)
+		- Initial Value : "1s"
+		- Values : "xs"
+		- define the duration of the animation
+	- **easeType**
+		- Type : [String](http://api.jquery.com/Types/#String)
+		- Initial Value : "ease-out"
+		- Values : "ease", "ease-in", "ease-out", "ease-in-out", "linear", "step-start", "step-end"
+		- define the ease type of the animation
+	- **callback**
+		- Type : [Function](http://api.jquery.com/Types/#Function)
+		- Initial Value : None
+		- Values : a function run after the background slide animation ended
+		- define the callback function of the animation
 
 ## Contributors
 
