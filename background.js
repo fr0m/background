@@ -27,7 +27,6 @@ window.Background = {
       }
     }
     op = $.extend(constructor, option);
-    ani_style = "background-position " + op.duration + " " + op.easeType;
     c = function(value) {
       var day, end, moment, now, start, this_moment, _i, _len, _ref, _ref1;
       if (typeof value === "string") {
@@ -69,13 +68,6 @@ window.Background = {
     };
     r_http_img = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?(?:\.(jpg|jpeg|bmp|png|gif|psd|eps|pif|psf|cdr|tga|pcd|mpt))$/i;
     r_http = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
-    p.$b.css({
-      'transition': ani_style,
-      'moz-transition': ani_style,
-      '-webkit-transition': ani_style,
-      '-o-transition': ani_style,
-      '-ms-transition': ani_style
-    });
     if (typeof op.data === "string") {
       if (r_http_img.test(op.data)) {
         p.$b.css("background-image", "url(" + op.data + ")");
@@ -87,12 +79,20 @@ window.Background = {
             return c(value);
           }
         });
-      } else {
+      } else if (op.data) {
         c(op.data);
       }
-    } else {
+    } else if (op.data) {
       c(op.data);
     }
+    ani_style = "background-position " + op.duration + " " + op.easeType;
+    p.$b.css({
+      'transition': ani_style,
+      'moz-transition': ani_style,
+      '-webkit-transition': ani_style,
+      '-o-transition': ani_style,
+      '-ms-transition': ani_style
+    });
     _ref = [p.$d.height(), p.$w.height()], doc_hei = _ref[0], win_hei = _ref[1];
     p.$b.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(event) {
       return op.callback();

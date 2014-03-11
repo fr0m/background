@@ -22,7 +22,7 @@ window.Background =
 					easeType : arguments[3]
 					callback : arguments[4]
 		op = $.extend constructor, option
-		ani_style = "background-position #{op.duration} #{op.easeType}"
+		
 		c = (value)->
 			if typeof value is "string" then value = $.parseJSON(value)
 			day = value.backgrounds
@@ -42,9 +42,10 @@ window.Background =
 			if this_moment
 				if this_moment.image then p.$b.css("background-image","url(#{this_moment.image})")
 				if this_moment.color then p.$b.css("background-color",this_moment.color)
+		
 		r_http_img = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?(?:\.(jpg|jpeg|bmp|png|gif|psd|eps|pif|psf|cdr|tga|pcd|mpt))$/i
 		r_http = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
-		p.$b.css({'transition':ani_style, 'moz-transition':ani_style, '-webkit-transition':ani_style, '-o-transition':ani_style, '-ms-transition':ani_style})
+		
 		if typeof op.data is "string"
 			if r_http_img.test(op.data)
 				p.$b.css("background-image","url(#{op.data})")
@@ -55,8 +56,10 @@ window.Background =
 					success : (value)->
 						c value
 				})
-			else c op.data
-		else c op.data
+			else if op.data then c op.data
+		else if op.data then c op.data
+		ani_style = "background-position #{op.duration} #{op.easeType}"
+		p.$b.css({'transition':ani_style, 'moz-transition':ani_style, '-webkit-transition':ani_style, '-o-transition':ani_style, '-ms-transition':ani_style})
 		[doc_hei, win_hei] = [p.$d.height(), p.$w.height()]
 		p.$b.on 'transitionend webkitTransitionEnd oTransitionEnd otransitionend',(event)->
 			op.callback()
