@@ -56,13 +56,13 @@ then, let's do this<br />
 ##### Background.tick()
 
 ```javascript
-	Background.tick(data[, horizontal, duration, easeType, callback]);
+	Background.tick([data, horizontal, duration, easeType, callback]);
 ```
 - **data**
 	- Type : [String](http://api.jquery.com/Types/#String) or [PlainObject](http://api.jquery.com/Types/#PlainObject)
 	- Default : None
 	- Values : URL of an image or URL return in JSON format or string in JSON format
-	- define the background and how it will change by time
+	- define the background and how it will change by time, it's not required if background-image is set in stylesheet
 - **horizontal**
 	- Type : [String](http://api.jquery.com/Types/#String)
 	- Default : "50%"
@@ -85,7 +85,7 @@ then, let's do this<br />
 	- define the callback function of the animation
 
 ```javascript
-	Background.tick(options);
+	Background.tick([options]);
 ```
 - **options**<br />
 	Type : [PlainObject](http://api.jquery.com/Types/#PlainObject)
@@ -93,7 +93,7 @@ then, let's do this<br />
 		- Type : [String](http://api.jquery.com/Types/#String) or [PlainObject](http://api.jquery.com/Types/#PlainObject)
 		- Default : None
 		- Values : URL of an image or URL return in JSON format or string in JSON format
-		- define the background and how it will change by time
+		- define the background and how it will change by time, it's not required if background-image is set in stylesheet
 	- **horizontal**
 		- Type : [String](http://api.jquery.com/Types/#String)
 		- Default : "50%"
