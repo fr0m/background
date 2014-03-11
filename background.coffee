@@ -1,4 +1,4 @@
-window.background = 
+window.Background = 
 	
 	internal:
 		$d : $(document)
@@ -43,7 +43,7 @@ window.background =
 				json : arguments[0]
 				backgroundImage : arguments[1]
 				backgroundColor : arguments[2]
-		op = $.extend constructor,option
+		op = $.extend constructor, option
 		reg_http = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
 		c = (value)->
 			if typeof value is "string" then value = $.parseJSON(value)
@@ -55,7 +55,7 @@ window.background =
 				if start[0] is end[0]
 					if now.getHours() is parseInt(start[0]) and start[1]<=now.getMinutes()<=end[1] then yes
 					else continue
-				else	
+				else
 					if parseInt(start[0])<now.getHours()<parseInt(end[0]) then yes
 					else if now.getHours() is parseInt(start[0]) and now.getMinutes() >= parseInt(start[1]) then yes
 					else if now.getHours() is parseInt(end[0]) and now.getMinutes() <= parseInt(end[1]) then yes
