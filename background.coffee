@@ -5,7 +5,7 @@ window.Background =
 		$w : $(window)
 		$b : $('body')
 	
-	slide:(option)->
+	tick:(option)->
 		p = this.internal
 		constructor = # Default Set
 			data : ""
