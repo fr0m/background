@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Background.js by fr0m</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/fr0m/background.js">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Background.js</h1>
+            <h2>based on jQuery</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/fr0m/background.js/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/fr0m/background.js/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a name="background-js" class="anchor" href="#background-js"><span class="octicon octicon-link"></span></a>Background JS</h1>
+
+<p><a href="https://travis-ci.org/fr0m/background"><img src="https://travis-ci.org/fr0m/background.png?branch=master" alt="Build Status"></a></p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>jQuery ~&gt; 1.7</li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h3>
+<a name="bower" class="anchor" href="#bower"><span class="octicon octicon-link"></span></a>Bower</h3>
+
+<pre><code>bower install background.js
+</code></pre>
+
+<h3>
+<a name="gem" class="anchor" href="#gem"><span class="octicon octicon-link"></span></a>Gem</h3>
+
+<pre><code>gem install rails-assets-background.js --source https://rails-assets.org
+</code></pre>
+
+<h2>
+<a name="demonstration-effect" class="anchor" href="#demonstration-effect"><span class="octicon octicon-link"></span></a>Demonstration Effect</h2>
+
+<p>Please visit</p>
+
+<p><a href="http://www.ihaveu.com/home">ihaveu.com/home</a></p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h3>
+
+<p>first, load <a href="http://jquery.com/">jQuery</a> and the plugin<br></p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://code.jquery.com/jquery-1.11.0.min.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://github.com/fr0m/background/blob/master/background.min.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>then, let's do this<br></p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">"backgrounds"</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">"started"</span><span class="o">:</span><span class="s2">"00:00:00"</span><span class="p">,</span>
+                        <span class="s2">"ended"</span><span class="o">:</span><span class="s2">"24:00:00"</span><span class="p">,</span>
+                        <span class="s2">"image"</span><span class="o">:</span><span class="s2">"http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg"</span><span class="p">,</span>
+                        <span class="s2">"color"</span><span class="o">:</span><span class="s2">"#fff"</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>   
+            <span class="p">};</span>
+<span class="nx">Background</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="api-docs" class="anchor" href="#api-docs"><span class="octicon octicon-link"></span></a>API DOCS</h3>
+
+<h5>
+<a name="backgroundtick" class="anchor" href="#backgroundtick"><span class="octicon octicon-link"></span></a>Background.tick()</h5>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">Background</span><span class="p">.</span><span class="nx">tick</span><span class="p">([</span><span class="nx">options</span><span class="p">]);</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">Background</span><span class="p">.</span><span class="nx">tick</span><span class="p">([</span><span class="nx">data</span><span class="p">,</span> <span class="nx">horizontal</span><span class="p">,</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">easeType</span><span class="p">,</span> <span class="nx">callback</span><span class="p">]);</span>
+</pre></div>
+
+<ul>
+<li>
+<strong>options</strong><br>
+Type : <a href="http://api.jquery.com/Types/#PlainObject">PlainObject</a>
+
+<ul>
+<li>
+<strong>data</strong>
+
+<ul>
+<li>Type : <a href="http://api.jquery.com/Types/#String">String</a> or <a href="http://api.jquery.com/Types/#PlainObject">PlainObject</a>
+</li>
+<li>Default : None</li>
+<li>Values : URL of an image or URL return in JSON format or string in JSON format</li>
+<li>define the background and how it will change by time, it's not required if background-image is set in stylesheet</li>
+</ul>
+</li>
+<li>
+<strong>horizontal</strong>
+
+<ul>
+<li>Type : <a href="http://api.jquery.com/Types/#String">String</a>
+</li>
+<li>Default : "50%"</li>
+<li>Values : "xx%"</li>
+<li>define the horizontal position of the background</li>
+</ul>
+</li>
+<li>
+<strong>duration</strong>
+
+<ul>
+<li>Type : <a href="http://api.jquery.com/Types/#String">String</a>
+</li>
+<li>Default : "1s"</li>
+<li>Values : "xs"</li>
+<li>define the duration of the animation</li>
+</ul>
+</li>
+<li>
+<strong>easeType</strong>
+
+<ul>
+<li>Type : <a href="http://api.jquery.com/Types/#String">String</a>
+</li>
+<li>Default : "ease-out"</li>
+<li>Values : "ease", "ease-in", "ease-out", "ease-in-out", "linear", "step-start", "step-end"</li>
+<li>define the ease type of the animation</li>
+</ul>
+</li>
+<li>
+<strong>callback</strong>
+
+<ul>
+<li>Type : <a href="http://api.jquery.com/Types/#Function">Function</a>
+</li>
+<li>Default : None</li>
+<li>Values : a function run after the background slide animation ended</li>
+<li>define the callback function of the animation</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h2>
+<a name="contributors" class="anchor" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h2>
+
+<p>Special thanks to</p>
+
+<ul>
+<li>
+<a href="http://www.ihaveu.com/home">http://www.ihaveu.com/home</a> team</li>
+<li>
+<a href="http://www.shuhai.org/">http://www.shuhai.org/</a> team</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright © 2014 He Liu <a href="mailto:gilbert.fr0m@gmail.com">gilbert.fr0m@gmail.com</a> under The <a href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/fr0m">fr0m</a> can be found on <a href="https://github.com/fr0m/background.js">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
