@@ -33,15 +33,15 @@ first, load [jQuery](http://jquery.com/) and the plugin<br />
 then, let's do this<br />
 ```javascript
 var json = {
-				"backgrounds": [
-					{
-						"started_at":"00:00:00",
-						"ended_at":"24:00:00",
-						"image":"http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg",
-						"color":"#fff"
-					}
-				]	
-			};
+	"backgrounds": [
+		{
+			"started_at":"00:00:00",
+			"ended_at":"24:00:00",
+			"image":"http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg",
+			"color":"#fff"
+		}
+	]	
+};
 Background.tick(json)
 ```
 
