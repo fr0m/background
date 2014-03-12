@@ -1,5 +1,5 @@
 # Background JS
-[![Build Status](https://travis-ci.org/fr0m/background.png?branch=master)](https://travis-ci.org/fr0m/background)
+[![Build Status](https://travis-ci.org/fr0m/background.js.png?branch=v0.0.5)](https://travis-ci.org/fr0m/background.js)
 
 ## Requirements
 
