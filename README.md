@@ -28,15 +28,15 @@ Please visit
 first, load [jQuery](http://jquery.com/) and the plugin<br />
 ```html
 <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
-<script src="https://github.com/fr0m/background/blob/master/background.min.js" type="text/javascript"></script>
+<script src="http://fr0m.github.io/background.js/background.min.js" type="text/javascript"></script>
 ```
 then, let's do this<br />
 ```javascript
 var json = {
 				"backgrounds": [
 					{
-						"started":"00:00:00",
-						"ended":"24:00:00",
+						"started_at":"00:00:00",
+						"ended_at":"24:00:00",
 						"image":"http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg",
 						"color":"#fff"
 					}

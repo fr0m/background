@@ -28,8 +28,8 @@ window.Background =
 			day = value.backgrounds
 			now = new Date()
 			for moment in day
-				start = moment.started.split(":")
-				end = moment.ended.split(':')
+				start = moment.started_at.split(":")
+				end = moment.ended_at.split(':')
 				if start[0] is end[0]
 					if now.getHours() is parseInt(start[0]) and start[1]<=now.getMinutes()<=end[1] then yes
 					else continue
