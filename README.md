@@ -45,6 +45,8 @@ var json = {
 Background.tick(json)
 ```
 
+### [API Documents](https://github.com/fr0m/background.js/wiki/API-Documents)
+
 ## Contributors
 
 Special thanks to
