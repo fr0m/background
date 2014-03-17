@@ -45,50 +45,16 @@ var json = {
 Background.tick(json)
 ```
 
-### API DOCS
-
-##### Background.tick()
-
-```javascript
-Background.tick([options]);
-```
-```javascript
-Background.tick([data, horizontal, duration, easeType, callback]);
-```
-- **options**<br />
-	Type : [PlainObject](http://api.jquery.com/Types/#PlainObject)
-	- **data**
-		- Type : [String](http://api.jquery.com/Types/#String) or [PlainObject](http://api.jquery.com/Types/#PlainObject)
-		- Default : None
-		- Values : URL of an image or URL return in JSON format or string in JSON format
-		- define the background and how it will change by time, it's not required if background-image is set in stylesheet
-	- **horizontal**
-		- Type : [String](http://api.jquery.com/Types/#String)
-		- Default : "50%"
-		- Values : "xx%"
-		- define the horizontal position of the background
-	- **duration**
-		- Type : [String](http://api.jquery.com/Types/#String)
-		- Default : "1s"
-		- Values : "xs"
-		- define the duration of the animation
-	- **easeType**
-		- Type : [String](http://api.jquery.com/Types/#String)
-		- Default : "ease-out"
-		- Values : "ease", "ease-in", "ease-out", "ease-in-out", "linear", "step-start", "step-end"
-		- define the ease type of the animation
-	- **callback**
-		- Type : [Function](http://api.jquery.com/Types/#Function)
-		- Default : None
-		- Values : a function run after the background slide animation ended
-		- define the callback function of the animation
-
 ## Contributors
 
 Special thanks to
 
-* http://www.ihaveu.com/home team
-* http://www.shuhai.org/ team
+* [ihaveu](http://www.ihaveu.com/home) team
+* [shuhai](http://www.shuhai.org/) team
+
+## Credits
+
+* fr0m @[ihaveu](http://www.ihaveu.com/home)
 
 ## License
 

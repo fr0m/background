@@ -2,31 +2,30 @@ $ ->
 	window.Background = 
 		
 		internal:
-			$d : $(document)
-			$w : $(window)
-			$b : $('body')
+			_document : $(document)
+			_window : $(window)
+			_body : $('body')
 		
-		tick:(option)->
-			p = this.internal
+		tick:(options)->
+			params = this.internal
 			constructor = # Default Set
 				data : ""
 				horizontal : "center"
 				duration : "1s"
 				easeType : "ease-out"
 				callback : ()->
-			exception = ["layout_msn", "layout_comm", "layout_qqcb", "layout_cmbc", "layout_jiayuan"]
-			return true for excep in exception when p.$b.hasClass(excep)
+			
 			if arguments.length
-				if typeof option is "string" or option.backgrounds
-					option = 
+				if typeof options is "string" or options.backgrounds
+					options = 
 						data : arguments[0]
 						horizontal : arguments[1]
 						duration : arguments[2]
 						easeType : arguments[3]
 						callback : arguments[4]
-			op = $.extend constructor, option
+			options = $.extend constructor, options
 			
-			c = (value)->
+			change = (value)->
 				if typeof value is "string" then value = $.parseJSON(value)
 				day = value.backgrounds
 				now = new Date()
@@ -43,34 +42,34 @@ $ ->
 						else continue
 					this_moment = moment
 				if this_moment
-					if this_moment.image then p.$b.css("background-image","url(#{this_moment.image})")
-					if this_moment.color then p.$b.css("background-color",this_moment.color)
+					if this_moment.image then params._body.css("background-image","url(#{this_moment.image})")
+					if this_moment.color then params._body.css("background-color",this_moment.color)
 			
-			r_http_img = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?(?:\.(jpg|jpeg|bmp|png|gif|psd|eps|pif|psf|cdr|tga|pcd|mpt))$/i
-			r_http = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
+			regExp_image_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?(?:\.(jpg|jpeg|bmp|png|gif|psd|eps|pif|psf|cdr|tga|pcd|mpt))$/i
+			regExp_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
 			
-			if typeof op.data is "string"
-				if r_http_img.test(op.data)
-					p.$b.css("background-image","url(#{op.data})")
-				else if r_http.test(op.data)
+			if typeof options.data is "string"
+				if regExp_image_url.test(options.data)
+					params._body.css("background-image","url(#{options.data})")
+				else if regExp_url.test(options.data)
 					$.ajax({
-						url : op.data
+						url : options.data
 						data : {}
 						success : (value)->
-							c value
+							change value
 					})
-				else if op.data then c op.data
-			else if op.data then c op.data
-			ani_style = "background-position #{op.duration} #{op.easeType}"
-			p.$b.css({'transition':ani_style, 'moz-transition':ani_style, '-webkit-transition':ani_style, '-o-transition':ani_style, '-ms-transition':ani_style})
-			[doc_hei, win_hei] = [p.$d.height(), p.$w.height()]
-			p.$b.on 'transitionend webkitTransitionEnd oTransitionEnd otransitionend',(event)->
-				op.callback()
-			p.$w.on 'resize', (event)->
-				win_hei = $(this).height()
-			p.$w.on 'scroll', (event)->
-				doc_hei = if doc_hei is p.$d.height() then doc_hei else p.$d.height()
-				scroll_hei = p.$d.scrollTop()
-				img_scroll = scroll_hei/(doc_hei - win_hei)*100.toFixed 7
-				p.$b.css("background-position",op.horizontal+" #{img_scroll}%")
+				else if options.data then change options.data
+			else if options.data then change options.data
+			animation_style = "background-position #{options.duration} #{options.easeType}"
+			params._body.css({'transition':animation_style, 'moz-transition':animation_style, '-webkit-transition':animation_style, '-o-transition':animation_style, '-ms-transition':animation_style})
+			[document_height, window_height] = [params._document.height(), params._window.height()]
+			params._body.on 'transitionend webkitTransitionEnd oTransitionEnd otransitionend',(event)->
+				options.callback()
+			params._window.on 'resize', (event)->
+				window_height = $(this).height()
+			params._window.on 'scroll', (event)->
+				document_height = if document_height is params._document.height() then document_height else params._document.height()
+				scroll_height = params._document.scrollTop()
+				image_scroll = scroll_height/(document_height - window_height)*100.toFixed 7
+				params._body.css("background-position",options.horizontal+" #{image_scroll}%")
 					
