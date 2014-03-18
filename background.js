@@ -7,27 +7,25 @@ $(function() {
       _body: $('body')
     },
     tick: function(options) {
-      var animation_style, change, constructor, document_height, params, regExp_image_url, regExp_url, window_height, _ref;
+      var animation_style, change, constructor, document_height, dom_document, params, window_height, _ref;
       params = this.internal;
       constructor = {
-        data: "",
+        source: {},
         horizontal: "center",
         duration: "1s",
         easeType: "ease-out",
         callback: function() {}
       };
       if (arguments.length) {
-        if (typeof options === "string" || options.backgrounds) {
+        if (options.image_url || options.json || options.json_url) {
           options = {
-            data: arguments[0],
-            horizontal: arguments[1],
-            duration: arguments[2],
-            easeType: arguments[3],
-            callback: arguments[4]
+            source: arguments[0],
+            callback: arguments[1]
           };
         }
       }
       options = $.extend(constructor, options);
+      dom_document = document;
       change = function(value) {
         var day, end, moment, now, start, this_moment, _i, _len, _ref, _ref1;
         if (typeof value === "string") {
@@ -60,31 +58,41 @@ $(function() {
         }
         if (this_moment) {
           if (this_moment.image) {
-            params._body.css("background-image", "url(" + this_moment.image + ")");
+            if (typeof jQuery !== 'undefined') {
+              params._body.css("background-image", "url(" + this_moment.image + ")");
+            } else {
+              if (dom_document.styleSheets[0].insertRule) {
+                dom_document.styleSheets[0].insertRule("body {background-image:url(" + this_moment.image + ");}", 0);
+              } else if (dom_document.styleSheets[0].addRule) {
+                dom_document.styleSheets[0].addRule("body", "background-image:url(" + this_moment.image + ")", 0);
+              }
+            }
           }
           if (this_moment.color) {
             return params._body.css("background-color", this_moment.color);
           }
         }
       };
-      regExp_image_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?(?:\.(jpg|jpeg|bmp|png|gif|psd|eps|pif|psf|cdr|tga|pcd|mpt))$/i;
-      regExp_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
-      if (typeof options.data === "string") {
-        if (regExp_image_url.test(options.data)) {
-          params._body.css("background-image", "url(" + options.data + ")");
-        } else if (regExp_url.test(options.data)) {
-          $.ajax({
-            url: options.data,
-            data: {},
-            success: function(value) {
-              return change(value);
-            }
-          });
-        } else if (options.data) {
-          change(options.data);
+      if (options.source.json) {
+        change(options.source.json);
+      } else if (options.source.json_url) {
+        $.ajax({
+          url: options.source.json_url,
+          data: {},
+          success: function(value) {
+            return change(value);
+          }
+        });
+      } else if (options.source.image_url) {
+        if (typeof jQuery !== 'undefined') {
+          params._body.css("background-image", "url(" + options.source.image_url + ")");
+        } else {
+          if (dom_document.styleSheets[0].insertRule) {
+            dom_document.styleSheets[0].insertRule("body {background-image:url(" + options.source.image_url + ");}", 0);
+          } else if (dom_document.styleSheets[0].addRule) {
+            dom_document.styleSheets[0].addRule("body", "background-image:url(" + options.source.image_url + ")", 0);
+          }
         }
-      } else if (options.data) {
-        change(options.data);
       }
       animation_style = "background-position " + options.duration + " " + options.easeType;
       params._body.css({
@@ -104,8 +112,8 @@ $(function() {
       return params._window.on('scroll', function(event) {
         var image_scroll, scroll_height;
         document_height = document_height === params._document.height() ? document_height : params._document.height();
-        scroll_height = params._document.scrollTop();
-        image_scroll = scroll_height / (document_height - window_height) * 100..toFixed(7);
+        scroll_height = params._window.scrollTop();
+        image_scroll = (scroll_height / (document_height - window_height) * 100).toFixed(7);
         return params._body.css("background-position", options.horizontal + (" " + image_scroll + "%"));
       });
     }

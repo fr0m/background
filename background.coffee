@@ -9,22 +9,19 @@ $ ->
 		tick:(options)->
 			params = this.internal
 			constructor = # Default Set
-				data : ""
+				source : {}
 				horizontal : "center"
 				duration : "1s"
 				easeType : "ease-out"
 				callback : ()->
-			
 			if arguments.length
-				if typeof options is "string" or options.backgrounds
+				if options.image_url or options.json or options.json_url
 					options = 
-						data : arguments[0]
-						horizontal : arguments[1]
-						duration : arguments[2]
-						easeType : arguments[3]
-						callback : arguments[4]
+						source : arguments[0]
+						callback : arguments[1]
 			options = $.extend constructor, options
-			
+			dom_document = document
+
 			change = (value)->
 				if typeof value is "string" then value = $.parseJSON(value)
 				day = value.backgrounds
@@ -42,34 +39,40 @@ $ ->
 						else continue
 					this_moment = moment
 				if this_moment
-					if this_moment.image then params._body.css("background-image","url(#{this_moment.image})")
+					if this_moment.image
+						if typeof jQuery isnt 'undefined' then params._body.css("background-image","url(#{this_moment.image})")
+						else
+							if dom_document.styleSheets[0].insertRule then dom_document.styleSheets[0].insertRule("body {background-image:url(#{this_moment.image});}",0)
+							else if dom_document.styleSheets[0].addRule then dom_document.styleSheets[0].addRule("body","background-image:url(#{this_moment.image})",0)
 					if this_moment.color then params._body.css("background-color",this_moment.color)
+
+			if options.source.json then change options.source.json
+			else if options.source.json_url
+				$.ajax({
+					url : options.source.json_url
+					data : {}
+					success : (value)->
+						change value
+				})
+			else if options.source.image_url
+				if typeof jQuery isnt 'undefined' then params._body.css("background-image","url(#{options.source.image_url})")
+				else
+					if dom_document.styleSheets[0].insertRule then dom_document.styleSheets[0].insertRule("body {background-image:url(#{options.source.image_url});}",0)
+					else if dom_document.styleSheets[0].addRule then dom_document.styleSheets[0].addRule("body","background-image:url(#{options.source.image_url})",0)
 			
-			regExp_image_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?(?:\.(jpg|jpeg|bmp|png|gif|psd|eps|pif|psf|cdr|tga|pcd|mpt))$/i
-			regExp_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
-			
-			if typeof options.data is "string"
-				if regExp_image_url.test(options.data)
-					params._body.css("background-image","url(#{options.data})")
-				else if regExp_url.test(options.data)
-					$.ajax({
-						url : options.data
-						data : {}
-						success : (value)->
-							change value
-					})
-				else if options.data then change options.data
-			else if options.data then change options.data
 			animation_style = "background-position #{options.duration} #{options.easeType}"
 			params._body.css({'transition':animation_style, 'moz-transition':animation_style, '-webkit-transition':animation_style, '-o-transition':animation_style, '-ms-transition':animation_style})
+			
 			[document_height, window_height] = [params._document.height(), params._window.height()]
+			
 			params._body.on 'transitionend webkitTransitionEnd oTransitionEnd otransitionend',(event)->
 				options.callback()
+			
 			params._window.on 'resize', (event)->
 				window_height = $(this).height()
+			
 			params._window.on 'scroll', (event)->
 				document_height = if document_height is params._document.height() then document_height else params._document.height()
-				scroll_height = params._document.scrollTop()
-				image_scroll = scroll_height/(document_height - window_height)*100.toFixed 7
+				scroll_height = params._window.scrollTop()
+				image_scroll = (scroll_height/(document_height - window_height)*100).toFixed(7)
 				params._body.css("background-position",options.horizontal+" #{image_scroll}%")
-					
