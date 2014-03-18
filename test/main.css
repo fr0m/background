@@ -45,8 +45,6 @@ table {
 body
 {	
 	background-image : url(./ihaveu.jpg);
-	background-repeat : no-repeat;
-	background-attachment : fixed;
 	background-position : center 0%;
 }
 .wrap

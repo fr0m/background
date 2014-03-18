@@ -7,21 +7,28 @@ $ ->
 			_body : $('body')
 		
 		tick:(options)->
+			# internal params
 			params = this.internal
-			constructor = # Default Set
+
+			# default set
+			constructor = 
 				source : {}
-				horizontal : "center"
 				duration : "1s"
 				easeType : "ease-out"
 				callback : ()->
+
+			# alternative arguments form
 			if arguments.length
 				if options.image_url or options.json or options.json_url
 					options = 
 						source : arguments[0]
 						callback : arguments[1]
 			options = $.extend constructor, options
+			
+			# initialize global variable
 			dom_document = document
 
+			# change background-image as json defined
 			change = (value)->
 				if typeof value is "string" then value = $.parseJSON(value)
 				day = value.backgrounds
@@ -46,6 +53,7 @@ $ ->
 							else if dom_document.styleSheets[0].addRule then dom_document.styleSheets[0].addRule("body","background-image:url(#{this_moment.image})",0)
 					if this_moment.color then params._body.css("background-color",this_moment.color)
 
+			# deal with different source		
 			if options.source.json then change options.source.json
 			else if options.source.json_url
 				$.ajax({
@@ -60,20 +68,24 @@ $ ->
 					if dom_document.styleSheets[0].insertRule then dom_document.styleSheets[0].insertRule("body {background-image:url(#{options.source.image_url});}",0)
 					else if dom_document.styleSheets[0].addRule then dom_document.styleSheets[0].addRule("body","background-image:url(#{options.source.image_url})",0)
 			
+			# initialize css
 			animation_style = "background-position #{options.duration} #{options.easeType}"
-			params._body.css({'transition':animation_style, 'moz-transition':animation_style, '-webkit-transition':animation_style, '-o-transition':animation_style, '-ms-transition':animation_style})
-			params._body.css({'background-position':options.horizontal+' 0%', 'background-repeat':'no-repeat','background-attachment':'fixed'})
+			params._body.css({'transition':animation_style, 'moz-transition':animation_style, '-webkit-transition':animation_style, '-o-transition':animation_style, '-ms-transition':animation_style, 'background-repeat':'no-repeat', 'background-attachment':'fixed'})
 			
+			coordinate = params._body.css('background-position').split(' ')
 			[document_height, window_height] = [params._document.height(), params._window.height()]
 			
+			# define callback
 			params._body.on 'transitionend webkitTransitionEnd oTransitionEnd otransitionend',(event)->
 				options.callback()
 			
+			# define resize event
 			params._window.on 'resize', (event)->
 				window_height = $(this).height()
 			
+			# background slide with window scroll
 			params._window.on 'scroll', (event)->
 				document_height = if document_height is params._document.height() then document_height else params._document.height()
 				scroll_height = params._window.scrollTop()
-				image_scroll = (scroll_height/(document_height - window_height)*100).toFixed(7)
-				params._body.css("background-position",options.horizontal+" #{image_scroll}%")
+				image_scroll = (scroll_height/(document_height - window_height)*(100-parseInt(coordinate[1]))+parseInt(coordinate[1])).toFixed(7)
+				params._body.css("background-position",coordinate[0]+" #{image_scroll}%")

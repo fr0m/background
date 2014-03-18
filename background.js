@@ -7,11 +7,10 @@ $(function() {
       _body: $('body')
     },
     tick: function(options) {
-      var animation_style, change, constructor, document_height, dom_document, params, window_height, _ref;
+      var animation_style, change, constructor, coordinate, document_height, dom_document, params, window_height, _ref;
       params = this.internal;
       constructor = {
         source: {},
-        horizontal: "center",
         duration: "1s",
         easeType: "ease-out",
         callback: function() {}
@@ -100,13 +99,11 @@ $(function() {
         'moz-transition': animation_style,
         '-webkit-transition': animation_style,
         '-o-transition': animation_style,
-        '-ms-transition': animation_style
-      });
-      params._body.css({
-        'background-position': options.horizontal + ' 0%',
+        '-ms-transition': animation_style,
         'background-repeat': 'no-repeat',
         'background-attachment': 'fixed'
       });
+      coordinate = params._body.css('background-position').split(' ');
       _ref = [params._document.height(), params._window.height()], document_height = _ref[0], window_height = _ref[1];
       params._body.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(event) {
         return options.callback();
@@ -118,8 +115,8 @@ $(function() {
         var image_scroll, scroll_height;
         document_height = document_height === params._document.height() ? document_height : params._document.height();
         scroll_height = params._window.scrollTop();
-        image_scroll = (scroll_height / (document_height - window_height) * 100).toFixed(7);
-        return params._body.css("background-position", options.horizontal + (" " + image_scroll + "%"));
+        image_scroll = (scroll_height / (document_height - window_height) * (100 - parseInt(coordinate[1])) + parseInt(coordinate[1])).toFixed(7);
+        return params._body.css("background-position", coordinate[0] + (" " + image_scroll + "%"));
       });
     }
   };
