@@ -33,30 +33,38 @@ first, load [jQuery](http://jquery.com/) and the plugin, Zepto.js can also suppo
 ```
 then, all u need is an image url.<br />
 ```javascript
-Background.tick({image_url:"http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg"});
+$(function(){
+  Background.tick({image_url:"http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg"});
+});
 ```
 string in format of json is also acceptable.<br />
 ```javascript
-var json = {
-  "backgrounds" : [
-    {
-      "started_at":"00:00:00",
-      "ended_at":"24:00:00",
-      "image":"http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg",
-      "color":"#fff"
-    }
-  ] 
-};
+$(function(){
+  var json = {
+    "backgrounds" : [
+      {
+        "started_at":"00:00:00",
+        "ended_at":"24:00:00",
+        "image":"http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg",
+        "color":"#fff"
+      }
+    ] 
+  };
+});
 Background.tick({json:json});
 ```
 an url return in format of json is acceptable as well.<br />
 ```javascript
-Background.tick({json_url:"http://fr0m.github.io/background.js/test/test.json"});
+$(function(){
+  Background.tick({json_url:"http://fr0m.github.io/background.js/test/test.json"});
+});
 ```
 and a callback function is supported
 ```javascript
-Background.tick({json_url:"http://fr0m.github.io/background.js/test/test.json"},function(){
-  alert("done!");
+$(function(){
+  Background.tick({json_url:"http://fr0m.github.io/background.js/test/test.json"},function(){
+    alert("done!");
+  });  
 });
 ```
 

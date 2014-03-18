@@ -62,7 +62,7 @@ $ ->
 			
 			animation_style = "background-position #{options.duration} #{options.easeType}"
 			params._body.css({'transition':animation_style, 'moz-transition':animation_style, '-webkit-transition':animation_style, '-o-transition':animation_style, '-ms-transition':animation_style})
-			params._body.css({'background-position':options.horizontal, 'background-repeat':'no-repeat','background-attachment':'fixed'})
+			params._body.css({'background-position':options.horizontal+' 0%', 'background-repeat':'no-repeat','background-attachment':'fixed'})
 			
 			[document_height, window_height] = [params._document.height(), params._window.height()]
 			

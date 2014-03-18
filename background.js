@@ -103,7 +103,7 @@ $(function() {
         '-ms-transition': animation_style
       });
       params._body.css({
-        'background-position': options.horizontal,
+        'background-position': options.horizontal + ' 0%',
         'background-repeat': 'no-repeat',
         'background-attachment': 'fixed'
       });
