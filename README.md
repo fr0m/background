@@ -19,8 +19,8 @@
 
 Please visit
 
-[ihaveu.com/home](http://www.ihaveu.com/home)
-[Screen Shot](http://fr0m.github.io/background.js/screenshot.png)
+[ihaveu.com/home](http://www.ihaveu.com/home)<br />
+![Screen Shot](http://fr0m.github.io/background.js/screenshot.png)
 
 ## Usage
 
