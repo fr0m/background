@@ -102,6 +102,11 @@ $(function() {
         '-o-transition': animation_style,
         '-ms-transition': animation_style
       });
+      params._body.css({
+        'background-position': options.horizontal,
+        'background-repeat': 'no-repeat',
+        'background-attachment': 'fixed'
+      });
       _ref = [params._document.height(), params._window.height()], document_height = _ref[0], window_height = _ref[1];
       params._body.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(event) {
         return options.callback();
