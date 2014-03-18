@@ -26,7 +26,7 @@ Please visit
 
 ### Example
 
-first, load [jQuery](http://jquery.com/) and the plugin<br />, Zepto.js can also support this plugin.
+first, load [jQuery](http://jquery.com/) and the plugin, Zepto.js can also support this plugin.<br />
 ```html
 <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="http://fr0m.github.io/background.js/background.min.js" type="text/javascript"></script>
