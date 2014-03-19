@@ -20,13 +20,13 @@
 Please visit
 
 [ihaveu.com/home](http://www.ihaveu.com/home)<br />
-![Screen Shot](http://fr0m.github.io/background.js/screenshot.png)
+![Screen Shot]()
 
 ## Usage
 
 ### Example
 
-first, load [jQuery](http://jquery.com/) and the plugin, Zepto.js can also support this plugin.<br />
+first, load [jQuery](http://jquery.com/) and the plugin, [Zepto.js](http://zeptojs.com/) can also support this plugin.<br />
 ```html
 <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="http://fr0m.github.io/background.js/background.min.js" type="text/javascript"></script>
@@ -34,7 +34,7 @@ first, load [jQuery](http://jquery.com/) and the plugin, Zepto.js can also suppo
 then, all u need is an image url.<br />
 ```javascript
 $(function(){
-  Background.tick({image_url:"http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg"});
+  Background.tick({imageUrl:"http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg"});
 });
 ```
 string in format of json is also acceptable.<br />
@@ -56,13 +56,13 @@ Background.tick({json:json});
 an url return in format of json is acceptable as well.<br />
 ```javascript
 $(function(){
-  Background.tick({json_url:"http://fr0m.github.io/background.js/test/test.json"});
+  Background.tick({jsonString:"http://fr0m.github.io/background.js/test/test.json"});
 });
 ```
 and a callback function is supported
 ```javascript
 $(function(){
-  Background.tick({json_url:"http://fr0m.github.io/background.js/test/test.json"},function(){
+  Background.tick({jsonString:"http://fr0m.github.io/background.js/test/test.json"},function(){
     alert("done!");
   });  
 });

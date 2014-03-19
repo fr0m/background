@@ -11,7 +11,7 @@ $ ->
 			params = this.internal
 
 			# default set
-			constructor = 
+			constructor =
 				source : {}
 				duration : "1s"
 				easeType : "ease-out"
@@ -19,7 +19,7 @@ $ ->
 
 			# alternative arguments form
 			if arguments.length
-				if options.image_url or options.json or options.json_url
+				if options.imageUrl or options.json or options.jsonString
 					options = 
 						source : arguments[0]
 						callback : arguments[1]
@@ -27,6 +27,7 @@ $ ->
 			
 			# initialize global variable
 			dom_document = document
+			regExp_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
 
 			# change background-image as json defined
 			change = (value)->
@@ -55,18 +56,20 @@ $ ->
 
 			# deal with different source		
 			if options.source.json then change options.source.json
-			else if options.source.json_url
-				$.ajax({
-					url : options.source.json_url
-					data : {}
-					success : (value)->
-						change value
-				})
-			else if options.source.image_url
-				if typeof jQuery isnt 'undefined' then params._body.css("background-image","url(#{options.source.image_url})")
+			else if options.source.jsonString
+				if regExp_url.test(options.source.jsonString)
+					$.ajax({
+						url : options.source.jsonString
+						data : {}
+						success : (value)->
+							change value
+					})
+				else change options.source.jsonString
+			else if options.source.imageUrl
+				if typeof jQuery isnt 'undefined' then params._body.css("background-image","url(#{options.source.imageUrl})")
 				else
-					if dom_document.styleSheets[0].insertRule then dom_document.styleSheets[0].insertRule("body {background-image:url(#{options.source.image_url});}",0)
-					else if dom_document.styleSheets[0].addRule then dom_document.styleSheets[0].addRule("body","background-image:url(#{options.source.image_url})",0)
+					if dom_document.styleSheets[0].insertRule then dom_document.styleSheets[0].insertRule("body {background-image:url(#{options.source.imageUrl});}",0)
+					else if dom_document.styleSheets[0].addRule then dom_document.styleSheets[0].addRule("body","background-image:url(#{options.source.imageUrl})",0)
 			
 			# initialize css
 			animation_style = "background-position #{options.duration} #{options.easeType}"

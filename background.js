@@ -7,7 +7,7 @@ $(function() {
       _body: $('body')
     },
     tick: function(options) {
-      var animation_style, change, constructor, coordinate, document_height, dom_document, params, window_height, _ref;
+      var animation_style, change, constructor, coordinate, document_height, dom_document, params, regExp_url, window_height, _ref;
       params = this.internal;
       constructor = {
         source: {},
@@ -16,7 +16,7 @@ $(function() {
         callback: function() {}
       };
       if (arguments.length) {
-        if (options.image_url || options.json || options.json_url) {
+        if (options.imageUrl || options.json || options.jsonString) {
           options = {
             source: arguments[0],
             callback: arguments[1]
@@ -25,6 +25,7 @@ $(function() {
       }
       options = $.extend(constructor, options);
       dom_document = document;
+      regExp_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
       change = function(value) {
         var day, end, moment, now, start, this_moment, _i, _len, _ref, _ref1;
         if (typeof value === "string") {
@@ -74,22 +75,26 @@ $(function() {
       };
       if (options.source.json) {
         change(options.source.json);
-      } else if (options.source.json_url) {
-        $.ajax({
-          url: options.source.json_url,
-          data: {},
-          success: function(value) {
-            return change(value);
-          }
-        });
-      } else if (options.source.image_url) {
+      } else if (options.source.jsonString) {
+        if (regExp_url.test(options.source.jsonString)) {
+          $.ajax({
+            url: options.source.jsonString,
+            data: {},
+            success: function(value) {
+              return change(value);
+            }
+          });
+        } else {
+          change(options.source.jsonString);
+        }
+      } else if (options.source.imageUrl) {
         if (typeof jQuery !== 'undefined') {
-          params._body.css("background-image", "url(" + options.source.image_url + ")");
+          params._body.css("background-image", "url(" + options.source.imageUrl + ")");
         } else {
           if (dom_document.styleSheets[0].insertRule) {
-            dom_document.styleSheets[0].insertRule("body {background-image:url(" + options.source.image_url + ");}", 0);
+            dom_document.styleSheets[0].insertRule("body {background-image:url(" + options.source.imageUrl + ");}", 0);
           } else if (dom_document.styleSheets[0].addRule) {
-            dom_document.styleSheets[0].addRule("body", "background-image:url(" + options.source.image_url + ")", 0);
+            dom_document.styleSheets[0].addRule("body", "background-image:url(" + options.source.imageUrl + ")", 0);
           }
         }
       }
