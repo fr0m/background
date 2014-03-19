@@ -19,8 +19,14 @@
 
 Please visit
 
-[ihaveu.com/home](http://www.ihaveu.com/home)<br />
-![Screen Shot]()
+- [ihaveu.com/home](http://www.ihaveu.com/home)
+- [swordray.com](http://swordray.com/)
+
+**Without** Background.js<br />
+![before](http://fr0m.github.io/background.js/before.png)
+<br />**With** Background.js<br />
+![after](http://fr0m.github.io/background.js/after.png)
+
 
 ## Usage
 
