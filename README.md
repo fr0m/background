@@ -37,13 +37,16 @@ first, load [jQuery](http://jquery.com/) and the plugin, [Zepto.js](http://zepto
 <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="http://fr0m.github.io/background.js/background.min.js" type="text/javascript"></script>
 ```
-then if background-image of body has been set.<br />
+just do this.<br />
+```css
+body { background-image: url("http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg"); }
+```
 ```javascript
 $(function(){
   Background.tick();
 });
 ```
-otherwise, an image url is needed.<br />
+or an image url can be used.<br />
 ```javascript
 $(function(){
   Background.tick({imageUrl:"http://i1.ihaveu.net/image/auction/picture/000/053/564/path/16dd7c4e.jpg"});
