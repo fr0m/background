@@ -45,12 +45,10 @@ table {
 body
 {	
 	background-image : url(./ihaveu.jpg);
-	background-position : center 0%;
 }
 .wrap
 {
 	background-color : #fff;
-	height : 100%;
 	width : 800px;
 	margin:0 auto;
 	opacity: 0.8

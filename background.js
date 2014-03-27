@@ -108,6 +108,9 @@ $(function() {
         'background-repeat': 'no-repeat',
         'background-attachment': 'fixed'
       });
+      if (!params._body.css('background-position')) {
+        return true;
+      }
       coordinate = params._body.css('background-position').split(' ');
       _ref = [params._document.height(), params._window.height()], document_height = _ref[0], window_height = _ref[1];
       params._body.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(event) {

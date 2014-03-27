@@ -75,6 +75,7 @@ $ ->
 			animation_style = "background-position #{options.duration} #{options.easeType}"
 			params._body.css({'transition':animation_style, 'moz-transition':animation_style, '-webkit-transition':animation_style, '-o-transition':animation_style, '-ms-transition':animation_style, 'background-repeat':'no-repeat', 'background-attachment':'fixed'})
 			
+			return true if not params._body.css('background-position')
 			coordinate = params._body.css('background-position').split(' ')
 			[document_height, window_height] = [params._document.height(), params._window.height()]
 			
