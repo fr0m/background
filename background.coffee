@@ -1,5 +1,10 @@
-$ ->
-	window.Background = 
+factory_function = (factory)->
+	if typeof module isnt 'undefined' and module.exports then module.exports = factory require 'jquery'
+	else if typeof define is 'function' and define.amd then define ['jquery'], factory
+	else window.Background = factory jQuery
+
+factory_function ($)->
+	Background = 
 		
 		internal:
 			_document : $(document)
@@ -9,7 +14,7 @@ $ ->
 		tick:(options)->
 			# internal params
 			params = this.internal
-
+			params._body = if params._body.length then params._body else $('body')
 			# default set
 			constructor =
 				source : {}
