@@ -1,6 +1,14 @@
 # Background JS
 [![Build Status](https://travis-ci.org/fr0m/background.js.png?branch=master)](https://travis-ci.org/fr0m/background.js)
 
+## Introduction
+this is an awesome plugin that makes your website background move when scrolling, that's hard to describe, you can visit these websites to see the effect:
+- [ihaveu.com/home](http://www.ihaveu.com/home)
+- [swordray.com](http://swordray.com/)
+
+and you can assgin multiple background images by json and it will change automatically by time!
+    
+
 ## Requirements
 
 * jQuery ~> 1.7
